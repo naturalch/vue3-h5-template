@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "Vue.official",
+    "bradlc.vscode-tailwindcss",
+    "mikestead.dotenv",
+    "antfu.iconify"
+  ]
+}
