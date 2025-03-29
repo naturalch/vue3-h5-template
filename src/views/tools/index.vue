@@ -1,17 +1,19 @@
-<script setup lang="ts" name="Tools">
-import { getListApi, getListApiError } from "@/api/mock";
-import { showFailToast, showSuccessToast } from "vant";
-import "vant/es/toast/style";
-import Fa6SolidAppleWhole from "@iconify-icons/fa6-solid/apple-whole";
-import Fa6SolidBasketball from "@iconify-icons/fa6-solid/basketball";
-import Fa6SolidBurger from "@iconify-icons/fa6-solid/burger";
-import Fa6SolidChessKnight from "@iconify-icons/fa6-solid/chess-knight";
+<script setup lang="ts">
+import { getListApi, getListApiError } from '@/api/mock';
+import { showFailToast, showSuccessToast } from 'vant';
+import 'vant/es/toast/style';
+import Fa6SolidAppleWhole from '@iconify-icons/fa6-solid/apple-whole';
+import Fa6SolidBasketball from '@iconify-icons/fa6-solid/basketball';
+import Fa6SolidBurger from '@iconify-icons/fa6-solid/burger';
+import Fa6SolidChessKnight from '@iconify-icons/fa6-solid/chess-knight';
+
+defineOptions({ name: 'Tools' });
 
 const showList: string[] = reactive([]);
 
 const handleSuccessReq = async () => {
   const { list } = await getListApi();
-  showSuccessToast("请求成功");
+  showSuccessToast('请求成功');
   showList.push(...list);
 };
 const handleErrorReq = () => {
@@ -19,29 +21,29 @@ const handleErrorReq = () => {
     () => {},
     err => {
       console.log(err);
-      showFailToast("请求有误");
-    }
+      showFailToast('请求有误');
+    },
   );
 };
 const clearReq = () => {
   showList.length = 0;
 };
 const iconOnlineList = [
-  "material-symbols:admin-panel-settings-outline",
-  "lucide:badge-check",
-  "pixelarticons:heart",
-  "meteocons:thunderstorms-day-overcast-fill"
+  'material-symbols:admin-panel-settings-outline',
+  'lucide:badge-check',
+  'pixelarticons:heart',
+  'meteocons:thunderstorms-day-overcast-fill',
 ];
 const iconOfflineList = [
   Fa6SolidAppleWhole,
   Fa6SolidBasketball,
   Fa6SolidBurger,
-  Fa6SolidChessKnight
+  Fa6SolidChessKnight,
 ];
 // 获取所有本地 svg 图标文件名称
-const modules = import.meta.glob("../../icons/svg/*.svg", { eager: true });
+const modules = import.meta.glob('../../icons/svg/*.svg', { eager: true });
 const svgIconLocalList = Object.keys(modules).map(key =>
-  key.replace("../../icons/svg/", "").replace(".svg", "")
+  key.replace('../../icons/svg/', '').replace('.svg', ''),
 );
 </script>
 

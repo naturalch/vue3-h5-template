@@ -2,7 +2,9 @@
   <div class="about px-[12px]">About</div>
 </template>
 
-<script setup lang="ts" name="About"></script>
+<script setup lang="ts">
+defineOptions({ name: 'About' });
+</script>
 
 <style scoped lang="less">
 .about {

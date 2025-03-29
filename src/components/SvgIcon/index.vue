@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { isExternal } from "@/utils/validate";
+import { isExternal } from '@/utils/validate';
 
 interface Props {
   name: string;
@@ -7,17 +7,17 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  name: "",
-  className: ""
+  name: '',
+  className: '',
 });
 
 const isExternalIcon = computed(() => isExternal(props.name));
 const iconName = computed(() => `#icon-${props.name}`);
 const svgClass = computed(() => {
   if (props.className) {
-    return "svg-icon " + props.className;
+    return 'svg-icon ' + props.className;
   } else {
-    return "svg-icon";
+    return 'svg-icon';
   }
 });
 
@@ -25,7 +25,7 @@ const svgClass = computed(() => {
 const styleExternalIcon = computed(() => {
   return {
     mask: `url(${props.name}) no-repeat 50% 50%`,
-    "-webkit-mask": `url(${props.name}) no-repeat 50% 50%`
+    '-webkit-mask': `url(${props.name}) no-repeat 50% 50%`,
   };
 });
 </script>

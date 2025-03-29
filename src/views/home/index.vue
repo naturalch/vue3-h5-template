@@ -16,22 +16,24 @@
   </div>
 </template>
 
-<script setup lang="ts" name="Home">
+<script setup lang="ts">
+defineOptions({ name: 'Home' });
+
 const contentList = reactive([
-  "✔ ⚡ Vue3 + Vite5",
-  "✔ 🍍 Pinia 状态管理",
-  "✔ Vue-router4 路由管理",
-  "✔ 🍕 TypeScript",
-  "✔ ✨ Vant4 组件库",
-  "✔ ⓣ Tailwindcss 原子类框架",
-  "✔ 👏 iconify + SVG + Vant Icon图标方案",
-  "✔ 🌓 支持深色模式",
-  "✔ vw vh 视口适配",
-  "✔ Axios 封装",
-  "✔ 打包 gzip 压缩",
-  "✔ 开发环境 Mock 数据",
-  "✔ ESLint, 代码规范 husky ，commit 规范",
-  "✔ 首屏加载动画",
-  "✔ 开发环境调试面板 eruda"
+  '✔ ⚡ Vue3 + Vite5',
+  '✔ 🍍 Pinia 状态管理',
+  '✔ Vue-router4 路由管理',
+  '✔ 🍕 TypeScript',
+  '✔ ✨ Vant4 组件库',
+  '✔ ⓣ Tailwindcss 原子类框架',
+  '✔ 👏 iconify + SVG + Vant Icon图标方案',
+  '✔ 🌓 支持深色模式',
+  '✔ vw vh 视口适配',
+  '✔ Axios 封装',
+  '✔ 打包 gzip 压缩',
+  '✔ 开发环境 Mock 数据',
+  '✔ ESLint, 代码规范 husky ，commit 规范',
+  '✔ 首屏加载动画',
+  '✔ 开发环境调试面板 eruda',
 ]);
 </script>

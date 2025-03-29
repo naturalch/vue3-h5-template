@@ -1,4 +1,4 @@
-import { useDarkModeStoreHook } from "@/store/modules/darkMode";
+import { useDarkModeStoreHook } from '@/store/modules/darkMode';
 
 /**
  * 是否是暗黑模式

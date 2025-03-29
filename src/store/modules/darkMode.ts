@@ -1,39 +1,39 @@
-import { defineStore } from "pinia";
-import { store } from "@/store";
-import { nextTick } from "vue";
+import { defineStore } from 'pinia';
+import { store } from '@/store';
+import { nextTick } from 'vue';
 
-const darkModeKey = "__dark_mode__";
+const darkModeKey = '__dark_mode__';
 
 const isDarkMode = () => {
   const darkMode = window.localStorage.getItem(darkModeKey);
   if (darkMode) {
-    return darkMode === "true";
+    return darkMode === 'true';
   } else {
     // js 中用于检测用户操作系统或浏览器是否启用了深色主题（Dark Mode）的 API
-    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
   }
 };
 
 export const useDarkModeStore = defineStore({
-  id: "dark-mode",
+  id: 'dark-mode',
   state: () => ({
-    darkMode: isDarkMode()
+    darkMode: isDarkMode(),
   }),
   actions: {
     toggleDarkMode(event?: TouchEvent | MouseEvent) {
       // 是否支持 View Transitions API && 用户是否未开启“减少动画“
       const isAppearanceTransition =
-        "startViewTransition" in document &&
-        !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        'startViewTransition' in document &&
+        !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       const toggle = () => {
         this.darkMode = !this.darkMode;
         if (this.darkMode) {
-          document.documentElement.classList.add("dark");
-          window.localStorage.setItem(darkModeKey, "true");
+          document.documentElement.classList.add('dark');
+          window.localStorage.setItem(darkModeKey, 'true');
         } else {
-          document.documentElement.classList.remove("dark");
-          window.localStorage.setItem(darkModeKey, "false");
+          document.documentElement.classList.remove('dark');
+          window.localStorage.setItem(darkModeKey, 'false');
         }
       };
 
@@ -56,7 +56,7 @@ export const useDarkModeStore = defineStore({
       }
       const endRadius = Math.hypot(
         Math.max(x, window.innerWidth - x),
-        Math.max(y, window.innerHeight - y)
+        Math.max(y, window.innerHeight - y),
       );
 
       const transition = (document as any).startViewTransition(async () => {
@@ -67,23 +67,23 @@ export const useDarkModeStore = defineStore({
       transition.ready.then(() => {
         const clipPath = [
           `circle(0px at ${x}px ${y}px)`,
-          `circle(${endRadius}px at ${x}px ${y}px)`
+          `circle(${endRadius}px at ${x}px ${y}px)`,
         ];
         document.documentElement.animate(
           {
-            clipPath: this.darkMode ? [...clipPath].reverse() : clipPath
+            clipPath: this.darkMode ? [...clipPath].reverse() : clipPath,
           },
           {
             duration: 400,
-            easing: "ease-out",
+            easing: 'ease-out',
             pseudoElement: this.darkMode
-              ? "::view-transition-old(root)"
-              : "::view-transition-new(root)"
-          }
+              ? '::view-transition-old(root)'
+              : '::view-transition-new(root)',
+          },
         );
       });
-    }
-  }
+    },
+  },
 });
 
 export function useDarkModeStoreHook() {
